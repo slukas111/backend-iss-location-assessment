@@ -2,6 +2,9 @@
 
 __author__ = 'Sasha Lukas + demo'
 
+#gobal scope
+base_url = 'http://api.open-notify.org'
+
 
 def main(args):
     #Part A: Name of astronauts and crafts
