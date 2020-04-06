@@ -8,8 +8,10 @@ import requests
 __author__ = 'Sasha Lukas + demo'
 
 
-#gobal scope
+"""gobal scopes"""
 base_url = 'http://api.open-notify.org'
+iss_icon = 'iss.gif'
+world_map ='map.gif'
 
 
 def get_astronauts():
@@ -18,9 +20,23 @@ def get_astronauts():
     r.raise_for_status()
     return r.json()['name']
 
+def get_iss_location():
+    """returns the current location (lat, lon) if iss as a float tuple"""
+    r = requests.get(base_url + '/iss-now.json')
+    r.raise_for_status()
+    position = r.json()['iss_position']
+    lat = float(position['latitude'])
+    lon = float(position['longitude'])
+    return lat, lon
+
+def map_iss(lat, lon):
+    """draw a world map and place iss icon at lat, lon"""
+    screen = tutle.Screen()
+    screen.setup(7)
+
 
 def main(args):
-    #Part A: Name of astronauts and crafts
+    # Part A: Name of astronauts and crafts
     nauts_dict = get_astronauts()
     print('\nCurrent people in Space: {}'.format(len(nauts_dict)))
     for naut in nauts_dict:
