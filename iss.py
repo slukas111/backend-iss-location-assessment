@@ -40,12 +40,16 @@ def main(args):
     nauts_dict = get_astronauts()
     print('\nCurrent people in Space: {}'.format(len(nauts_dict)))
     for naut in nauts_dict:
-        print(' - {}'.fomat(naut['people'], naut['craft']))
+        print(' - {}'.fomat(naut['name'], naut['craft']))
     
     #Part B: current positionof iss
     lat, lon = get_iss_location()
     print('\nCurrent iss coordinates: lat={:.02f} lon={:.02f}'.format(lat, lon))
 
+#Part C: render current iss on world map
+    screen = None
+    try:
+        screen = map_iss(lat, lon)
 
 
 if __name__ == '__main__':
