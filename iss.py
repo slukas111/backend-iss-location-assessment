@@ -31,8 +31,19 @@ def get_iss_location():
 
 def map_iss(lat, lon):
     """draw a world map and place iss icon at lat, lon"""
-    screen = tutle.Screen()
-    screen.setup(7)
+    screen = turtle.Screen()
+    screen.setup(720, 360)
+    screen.bgpic(world_map)
+    screen.setworldcoordinates(-180, -90, 180, 90)
+
+    screen.register_shape(iss_icon)
+    iss = turtle.Turtle()
+    iss.shape(iss_icon)
+    iss.setheading(90)
+    iss.penup()
+    iss.goto(lon, lat)
+    return screen
+
 
 
 def main(args):
