@@ -11,14 +11,14 @@ __author__ = 'Sasha Lukas + demo'
 """gobal scopes"""
 base_url = 'http://api.open-notify.org'
 iss_icon = 'iss.gif'
-world_map ='map.gif'
+world_map = 'map.gif'
 
 
 def get_astronauts():
     """return dictionary of current astronauts and their spacecrafts"""
     r = requests.get(base_url + '/astros.json')
     r.raise_for_status()
-    return r.json()['name']
+    return r.json()['people']
 
 def get_iss_location():
     """returns the current location (lat, lon) if iss as a float tuple"""
@@ -40,7 +40,11 @@ def main(args):
     nauts_dict = get_astronauts()
     print('\nCurrent people in Space: {}'.format(len(nauts_dict)))
     for naut in nauts_dict:
-        print(' - {}'.fomat(naut['name'], naut['craft']))
+        print(' - {}'.fomat(naut['people'], naut['craft']))
+    
+    #Part B: current positionof iss
+    lat, lon = get_iss_location()
+    print('\nCurrent iss coordinates: lat={:.02f} lon={:.02f}'.format(lat, lon))
 
 
 
