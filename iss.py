@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
+import time
+import requests
+import turtle 
+
 __author__ = 'Sasha Lukas + demo'
+
 
 #gobal scope
 base_url = 'http://api.open-notify.org'
