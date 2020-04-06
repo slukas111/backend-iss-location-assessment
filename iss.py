@@ -1,14 +1,22 @@
 #!/usr/bin/env python
 
 import time
-import requests
 import turtle 
+import urllib
+import requests
 
 __author__ = 'Sasha Lukas + demo'
 
 
 #gobal scope
 base_url = 'http://api.open-notify.org'
+
+
+def get_astronauts():
+    """return dictionary of current astronauts and their spacecrafts"""
+    r = requests.get(base_url + '/astros.json')
+    r.raise_for_status()
+    return r.json()['name']
 
 
 def main(args):
